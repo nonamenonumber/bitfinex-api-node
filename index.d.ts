@@ -269,7 +269,7 @@ declare namespace BFX {
     performance(): void;
     calcAvailableBalance(): void;
     symbols(): void;
-    symbolDetails(): void;
+    symbolDetails(cb: (symbols: any) => any): any;
     accountInfo(): void;
     accountFees(): void;
     accountSummary(): void;
