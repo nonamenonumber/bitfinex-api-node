@@ -433,7 +433,7 @@ declare namespace BFX {
     onCandle(opts: WSv2.IWSv2onCandle, cb: (candle: Models.Candle) => any): void;
     onOrderBook(opts: WSv2.IWSv2onOrderBook, cb: (...args: any[]) => any): void; // Change args when model made
     onOrderBookChecksum(opts: WSv2.IWSv2onOrderBook, cb: (...args: any[]) => any): void;
-    onTrades(opts: WSv2.IWSv2onTrades, cb: (trade: Models.PublicTrade) => any): void;
+    onTrades(opts: WSv2.IWSv2onTrades, cb: (trade: Models.PublicTrade[]) => any): void;
     onTicker(opts: WSv2.IWSv2onTicker, cb: (...args: any[]) => any): void;
     onOrderSnapshot(opts: WSv2.IWSv2onOrderSnapshot, cb: (orderSnapshot: Models.Order[]) => any): void;
     onOrderNew(opts: WSv2.IWSv2onOrderNew, cb: (order: Models.Order) => any): void;
@@ -443,8 +443,8 @@ declare namespace BFX {
     onPositionNew(opts: WSv2.IWSv2onPosition, cb: (position: Models.Position) => any): void;
     onPositionUpdate(opts: WSv2.IWSv2onPosition, cb: (position: Models.Position) => any): void;
     onPositionClose(opts: WSv2.IWSv2onPosition, cb: (position: Models.Position) => void): void;
-    onTradeEntry(opts: WSv2.IWSv2onTrades, cb: (trade: Models.Trade) => void): void;
-    onTradeUpdate(opts: WSv2.IWSv2onTrades, cb: (trade: Models.Trade) => void): void;
+    onTradeEntry(opts: WSv2.IWSv2onTrades, cb: (trades: Models.Trade[]) => void): void;
+    onTradeUpdate(opts: WSv2.IWSv2onTrades, cb: (trades: Models.Trade[]) => void): void;
     onFundingOfferSnapshot(): void;
     onFundingOfferNew(): void;
     onFundingOfferUpdate(): void;
