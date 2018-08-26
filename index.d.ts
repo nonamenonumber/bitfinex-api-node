@@ -81,7 +81,7 @@ declare namespace BFX {
       type: string;
       typePrev: string; // ?
       flags: number; // ?
-      status: string; // ?
+      status: Order.status; // ?
       price: number; // ?
       priceAvg: number; // ?
       priceTrailing: number; // ?
