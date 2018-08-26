@@ -78,7 +78,7 @@ declare namespace BFX {
       mtsUpdate: number; // ?
       amount: number;
       amountOrig: number; // ?
-      type: string;
+      type: Order.type;
       typePrev: string; // ?
       flags: number; // ?
       status: Order.status; // ?
