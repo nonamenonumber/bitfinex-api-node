@@ -430,7 +430,7 @@ declare namespace BFX {
     notifyUI(type: string, message: string): void;
     onInfoMessage(code: number, cb: (...args: any[]) => any): void;
     onMessage(opts: WSv2.IWSv2onMessage, cb: (...args: any[]) => any): void;
-    onCandle(opts: WSv2.IWSv2onCandle, cb: (candle: Models.Candle) => any): void;
+    onCandle(opts: WSv2.IWSv2onCandle, cb: (candles: Models.Candle[]) => any): void;
     onOrderBook(opts: WSv2.IWSv2onOrderBook, cb: (...args: any[]) => any): void; // Change args when model made
     onOrderBookChecksum(opts: WSv2.IWSv2onOrderBook, cb: (...args: any[]) => any): void;
     onTrades(opts: WSv2.IWSv2onTrades, cb: (trade: Models.PublicTrade[]) => any): void;
