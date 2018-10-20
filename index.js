@@ -1,10 +1,8 @@
 'use strict'
 
-const Models = require('./lib/models')
-const RESTv1 = require('./lib/transports/rest.js')
-const WSv1 = require('./lib/transports/ws.js')
-const RESTv2 = require('./lib/transports/rest2.js')
-const WSv2 = require('./lib/transports/ws2.js')
+const { RESTv1, RESTv2 } = require('bfx-api-node-rest')
+const WSv1 = require('bfx-api-node-ws1')
+const WSv2 = require('./lib/transports/ws2')
 
 /**
  * Provides access to versions 1 & 2 of the HTTP & WebSocket Bitfinex APIs
@@ -24,6 +22,7 @@ class BFX {
     apiKey: '',
     apiSecret: '',
     authToken: '',
+    company: '',
     transform: false,
     ws: {},
     rest: {}
@@ -38,6 +37,7 @@ class BFX {
     this._apiKey = opts.apiKey || ''
     this._apiSecret = opts.apiSecret || ''
     this._authToken = opts.authToken || ''
+    this._company = opts.company || ''
     this._transform = opts.transform === true
     this._wsArgs = opts.ws || {}
     this._restArgs = opts.rest || {}
@@ -52,6 +52,7 @@ class BFX {
       apiKey: this._apiKey,
       apiSecret: this._apiSecret,
       authToken: this._authToken,
+      company: this._company,
       transform: this._transform
     }, extraOpts)
   }
@@ -114,4 +115,3 @@ module.exports.RESTv1 = RESTv1
 module.exports.RESTv2 = RESTv2
 module.exports.WSv1 = WSv1
 module.exports.WSv2 = WSv2
-module.exports.Models = Models
