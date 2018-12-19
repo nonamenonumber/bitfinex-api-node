@@ -134,14 +134,11 @@ ws.on('open', () => {
   ws.subscribeTrades('BTCUSD')
 })
 
-ws.onTrades({ pair: 'BTCUSD' }, (trades) => {
+ws.onTrades({ symbol: 'tBTCUSD' }, (trades) => {
   console.log(`trades: ${JSON.stringify(trades)}`)
 })
-ws.onTradeEntry({ pair: 'BTCUSD' }, (trades) => {
+ws.onTradeEntry({ symbol: 'tBTCUSD' }, (trades) => {
   console.log(`te: ${JSON.stringify(trades)}`)
-})
-ws.onTradeUpdate({ pair: 'BTCUSD' }, (trades) => {
-  console.log(`tu: ${JSON.stringify(trades)}`)
 })
 
 ws.open()
@@ -210,3 +207,11 @@ If you need to go parallel, you have to use multiple API keys right now.
 ### How do `te` and `tu` messages differ?
 
 A `te` packet is sent first to the client immediately after a trade has been matched & executed, followed by a `tu` message once it has completed processing. During times of high load, the `tu` message may be noticably delayed, and as such only the `te` message should be used for a realtime feed.
+
+### What are the sequence numbers for?
+
+If you enable sequencing on v2 of the WS API, each incoming packet will have a public sequence number at the end, along with an auth sequence number in the case of channel `0` packets. The public seq numbers increment on each packet, and the auth seq numbers increment on each authenticated action (new orders, etc). These values allow you to verify that no packets have been missed/dropped, since they always increase monotonically.
+
+### What is the difference between R* and P* order books?
+
+Order books with precision `R0` are considered 'raw' and contain entries for each order submitted to the book, whereas `P*` books contain entries for each price level (which aggregate orders).
